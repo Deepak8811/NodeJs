@@ -1,0 +1,22 @@
+{
+  "name": "tut",
+  "version": "1.0.0",
+  "description": "A node js tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deepak8811/NodeJs.git"
+  },
+  "keywords": [
+    "NodeJs"
+  ],
+  "author": "Deepak chaurasiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deepak8811/NodeJs/issues"
+  },
+  "homepage": "https://github.com/Deepak8811/NodeJs#readme"
+}

@@ -68,13 +68,16 @@ const http = require("http");
 // }
 
 
-const dataControl = (req, resp) => {
-    resp.write("<h1>Hello! This is Deepak chaurasiya</h1>");
-    resp.end();
-}
+// const dataControl = (req, resp) => {
+//     resp.write("<h1>Hello! This is Deepak chaurasiya</h1>");
+//     resp.end();
+// }
 
-http.createServer((req, resp) => {
-    resp.write("<h1>Hello! This is Deepak chaurasiya</h1>");
-    resp.end();
-}).listen(4500);
+// http.createServer((req, resp) => {
+//     resp.write("<h1>Hello! This is Deepak chaurasiya</h1>");
+//     resp.end();
+// }).listen(4500);
+
+console.log("Package.json");
+
 
