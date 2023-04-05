@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/Deepak8811/NodeJs/issues"
   },
-  "homepage": "https://github.com/Deepak8811/NodeJs#readme"
+  "homepage": "https://github.com/Deepak8811/NodeJs#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "colour": "^0.7.1",
+    "simple-node-logger": "^21.8.12"
+  }
 }

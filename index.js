@@ -53,7 +53,7 @@
 // console.log("==>>",__filename);
 // fs("code.txt","some code");  
 
-const http = require("http");
+// const http = require("http");
 
 // http.createServer((req, resp) => {
 //     resp.write("<h1>Hello this is Deepak chaurasiya</h1>");
@@ -77,7 +77,41 @@ const http = require("http");
 //     resp.write("<h1>Hello! This is Deepak chaurasiya</h1>");
 //     resp.end();
 // }).listen(4500);
+// const colors = require('colors');
+// console.log("Hello!".red);
+// console.log("This is Deepak chaurasiya".green);
+var colors=require('colour');
+console.log("Hello".red);
+console.log("This is Deepak chaurasiya".rainbow);
+console.log("And I am a full stack Developer!".yellow);
 
-console.log("Package.json");
+console.log("Package.json".rainbow);
+
+
+
+// var chalk=require('chalk');
+// import chalk from 'chalk';
+// console.log(chalk.blue('Hello world!'));
+// console.log(chalk.backgroundColors("Hello world!"));
+
+// const log = console.log;
+
+// // Combine styled and normal strings
+// log(chalk.blue('Hello') + ' World' + chalk.red('!'));
+// console.log("Chalk");
+
+
+// const chalk = require('chalk');
+
+// console.log(chalk.blue('Hello world!'));
+
+
+
+// const chalk=require("chalk");
+  
+// // Printing the text
+// console.log(chalk.red("aayush"))
+// console.log(chalk.red.underline("aayush"))
+// console.log(chalk.red.underline.bold("GFG"))
 
 
