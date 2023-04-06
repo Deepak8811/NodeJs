@@ -164,10 +164,10 @@
 
 //Path Modules
 
-const fs = require('fs');
-const path = require('path');
-// const dirPath = path.join(__dirname);
-const dirPath = path.join(__dirname, 'files');
+// const fs = require('fs');
+// const path = require('path');
+// // const dirPath = path.join(__dirname);
+// const dirPath = path.join(__dirname, 'files');
 // console.log(dirPath);
 // for (i = 0; i < 5; i++) {
 //     //This is create a only one file
@@ -187,14 +187,21 @@ const dirPath = path.join(__dirname, 'files');
 //     console.log(item);
 // })
 
-
+ 
 
 //For single single presentation of all files inside the folder
 
-fs.readdir(dirPath, (err, items) => {
-    items.forEach((item) => {
-        console.log("File name is:", item);
-    })
-})
+// fs.readdir(dirPath, (err, items) => {
+//     items.forEach((item) => {
+//         console.log("File name is:", item);
+//     })
+// })
+
+
+const fs = require('fs');
+const path = require('path');
+const dirPath = path.join(__dirname, 'crud');
+const filePath = `${dirPath}/apple.txt`;
+fs.writeFileSync(filePath, 'This is a simple texrt file');
 
 
