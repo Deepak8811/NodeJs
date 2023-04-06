@@ -147,17 +147,37 @@
 // console.log(process.argv[4]);
 
 
+// const fs = require('fs');
+// const input = process.argv;
+// fs.writeFileSync(input[2], input[3]);
+// if (input[2] == 'add') {
+//     fs.writeFileSync(input[3], input[4]);
+// }
+// else if (input[2] == 'remove') {
+//     fs.unlinkSync(input[3]);
+// }
+// else {
+//     console.log("Indalid Input");
+// }
+
+
+
+//Path Modules
+
 const fs = require('fs');
-const input = process.argv;
-fs.writeFileSync(input[2], input[3]);
-if (input[2] == 'add') {
-    fs.writeFileSync(input[3], input[4]);
-}
-else if (input[2] == 'remove') {
-    fs.unlinkSync(input[3]);
-}
-else {
-    console.log("Indalid Input");
+const path = require('path');
+// const dirPath = path.join(__dirname);
+const dirPath = path.join(__dirname, 'files');
+// console.log(dirPath);
+for (i = 0; i < 5; i++) {
+    //This is create a only one file
+    // fs.writeFileSync("hello.txt", "A simple text file is here");
+    //These are Dynamic allocation two method is here.....
+    // fs.writeFileSync("hello" + i + ".txt", "A simple text file is here");
+
+
+
+    fs.writeFileSync(dirPath+`/hello${i}.txt`, "A simple text file is here");
 }
 
 
