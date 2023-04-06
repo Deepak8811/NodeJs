@@ -187,7 +187,7 @@
 //     console.log(item);
 // })
 
- 
+
 
 //For single single presentation of all files inside the folder
 
@@ -202,6 +202,31 @@ const fs = require('fs');
 const path = require('path');
 const dirPath = path.join(__dirname, 'crud');
 const filePath = `${dirPath}/apple.txt`;
-fs.writeFileSync(filePath, 'This is a simple texrt file');
+
+//Create file
+
+// fs.writeFileSync(filePath, 'This is a simple texrt file');
+
+//Read file
+
+// fs.readFile(filePath, (err, itemData) => {
+//     console.log(itemData);
+// })
+//for resolve this problem use another parameter use "utf8"
+// fs.readFile(filePath, 'utf8', (err, itemData) => {
+//     console.log(itemData);
+
+// })
+
+//Update File
+
+fs.appendFile(filePath, ' ..and file name is apple, apple is a good fruit for health', (err) => {
+    if (!err) {
+        console.log("File is Updated");
+    }
+})
+
+
+
 
 
