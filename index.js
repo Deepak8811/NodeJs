@@ -198,10 +198,10 @@
 // })
 
 
-const fs = require('fs');
-const path = require('path');
-const dirPath = path.join(__dirname, 'crud');
-const filePath = `${dirPath}/apple.txt`;
+// const fs = require('fs');
+// const path = require('path');
+// const dirPath = path.join(__dirname, 'crud');
+// const filePath = `${dirPath}/apple.txt`;
 
 //Create file
 
@@ -228,11 +228,43 @@ const filePath = `${dirPath}/apple.txt`;
 
 //Rename
 
-fs.rename(filePath, `${dirPath}/fruit.txt`, (err) => {
-    if (!err) {
-        console.log("File is Renamed..");
-    }
-})
+// fs.rename(filePath, `${dirPath}/fruit.txt`, (err) => {
+//     if (!err) {
+//         console.log("File is Renamed..");
+//     }
+// })
+
+//Delete Opration 
+
+// fs.unlinkSync(`${dirPath}/fruit.txt`);
+
+
+//Synchronous and Asynchronous Programming
+
+setTimeout(() => {
+    console.log("Start exe.....");
+}, 2000);
+setTimeout(() => {
+    console.log("Logic exe.....");
+}, 5000);
+
+// setTimeout(() => {
+
+// }, .00000001);
+console.log("Complete exe.....");
+
+
+//Drow back of Asynchronous programming language
+
+let a = 20;
+let b = 10;
+
+setTimeout(() => {
+    b = 30;
+}, 2000);
+
+console.log(a + b);
+
 
 
 
