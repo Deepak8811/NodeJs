@@ -241,29 +241,47 @@
 
 //Synchronous and Asynchronous Programming
 
-setTimeout(() => {
-    console.log("Start exe.....");
-}, 2000);
-setTimeout(() => {
-    console.log("Logic exe.....");
-}, 5000);
-
 // setTimeout(() => {
+//     console.log("Start exe.....");
+// }, 2000);
+// setTimeout(() => {
+//     console.log("Logic exe.....");
+// }, 5000);
 
-// }, .00000001);
-console.log("Complete exe.....");
+// // setTimeout(() => {
+
+// // }, .00000001);
+// console.log("Complete exe.....");
 
 
 //Drow back of Asynchronous programming language
 
+// let a = 20;
+// let b = 10;
+
+// setTimeout(() => {
+//     b = 30;
+// }, 2000);
+
+// console.log(a + b);
+
+
+// Handle Asynchronous Data in Node with the help of Promises
+
 let a = 20;
-let b = 10;
+let b = 0;
 
-setTimeout(() => {
-    b = 30;
-}, 2000);
+let waitingData = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(30);
+    }, 2000)
+});
 
-console.log(a + b);
+waitingData.then((data) => {
+    b = data;
+    console.log(a + b);
+
+});
 
 
 
