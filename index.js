@@ -268,20 +268,40 @@
 
 // Handle Asynchronous Data in Node with the help of Promises
 
-let a = 20;
-let b = 0;
+// let a = 20;
+// let b = 0;
 
-let waitingData = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(30);
-    }, 2000)
-});
+// let waitingData = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(30);
+//     }, 2000)
+// });
 
-waitingData.then((data) => {
-    b = data;
-    console.log(a + b);
+// waitingData.then((data) => {
+//     b = data;
+//     console.log(a + b);
 
-});
+// });
+
+
+// How Node js work and Architecture of Node js :- Programm->Call stack->Node API->Callback loop->Output
+// Generally all time Node AIP and Calllback queue Not run so that =>programm->call stack ->output. 1st main() function is call internally and then all function
+// call which is written inside the main() function, after the execution function remove from the call stack and last when output is done then main()
+// function removed from the call stack.
+
+console.log("Starting Up");
+
+setTimeout(() => {
+    console.log("2 second loss")
+}, 2000);
+
+setTimeout(() => {
+    console.log("0 second loss")
+}, 0);
+
+console.log("Finishing up");
+
+
 
 
 
