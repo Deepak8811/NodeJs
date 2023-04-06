@@ -289,17 +289,40 @@
 // call which is written inside the main() function, after the execution function remove from the call stack and last when output is done then main()
 // function removed from the call stack.
 
-console.log("Starting Up");
+// console.log("Starting Up");
 
-setTimeout(() => {
-    console.log("2 second loss")
-}, 2000);
+// setTimeout(() => {
+//     console.log("2 second loss")
+// }, 2000);
 
-setTimeout(() => {
-    console.log("0 second loss")
-}, 0);
+// setTimeout(() => {
+//     console.log("0 second loss")
+// }, 0);
 
-console.log("Finishing up");
+// console.log("Finishing up");
+
+
+// Express Js
+
+const express = require('express');
+
+const app = express();//Executable banane ke liye kiya gaya hai ....
+//Home page
+app.get("", (req, resp) => {
+    console.log("Data send by the browser is=>", req.query.name)
+
+    resp.send("<h1>Hello!</h1>"+req.query.name);
+});
+//pages
+app.get('/about', (req, resp) => {
+    resp.send("Hello! This is Deepak chaurasiya and i am a full stack developer.")
+});
+app.get('/help', (req, resp) => {
+    resp.send("Hello! This is Help page.")
+});
+
+//Now create a server poart.
+app.listen(5000);
 
 
 
