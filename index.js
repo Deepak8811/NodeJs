@@ -77,15 +77,20 @@
 //     resp.write("<h1>Hello! This is Deepak chaurasiya</h1>");
 //     resp.end();
 // }).listen(4500);
+
+
 // const colors = require('colors');
 // console.log("Hello!".red);
 // console.log("This is Deepak chaurasiya".green);
-var colors=require('colour');
-console.log("Hello".red);
-console.log("This is Deepak chaurasiya".rainbow);
-console.log("And I am a full stack Developer!".yellow);
 
-console.log("Package.json".rainbow);
+
+
+// var colors=require('colour');
+// console.log("Hello".red);
+// console.log("This is Deepak chaurasiya".rainbow);
+// console.log("And I am a full stack Developer!".yellow);
+
+// console.log("Package.json".rainbow);
 
 
 
@@ -108,10 +113,52 @@ console.log("Package.json".rainbow);
 
 
 // const chalk=require("chalk");
-  
+
 // // Printing the text
 // console.log(chalk.red("aayush"))
 // console.log(chalk.red.underline("aayush"))
 // console.log(chalk.red.underline.bold("GFG"))
+
+
+// console.log("Hello! My self Deepak chaurasiya and i am a Full Stack Developer");
+// console.log(10000+1000846);
+// console.log(5-1000000);
+
+
+//Creating API 
+
+// const http = require("http");
+// const data = require("./data")
+// http.createServer((req, resp) => {
+//     //Head
+//     resp.writeHead(200, { 'content-Type': 'application\json' });
+//     //Body
+//     resp.write(JSON.stringify(data));
+//     //for ending the response
+//     resp.end();
+// }).listen(4200);
+
+//Input from command Line
+
+// console.log("Hello!");
+// console.log(process);
+// console.log(process.argv);
+// console.log(process.argv[0]);
+// console.log(process.argv[4]);
+
+
+const fs = require('fs');
+const input = process.argv;
+fs.writeFileSync(input[2], input[3]);
+if (input[2] == 'add') {
+    fs.writeFileSync(input[3], input[4]);
+}
+else if (input[2] == 'remove') {
+    fs.unlinkSync(input[3]);
+}
+else {
+    console.log("Indalid Input");
+}
+
 
 
