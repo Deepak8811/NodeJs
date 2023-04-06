@@ -220,12 +220,19 @@ const filePath = `${dirPath}/apple.txt`;
 
 //Update File
 
-fs.appendFile(filePath, ' ..and file name is apple, apple is a good fruit for health', (err) => {
+// fs.appendFile(filePath, ' ..and file name is apple, apple is a good fruit for health', (err) => {
+//     if (!err) {
+//         console.log("File is Updated");
+//     }
+// })
+
+//Rename
+
+fs.rename(filePath, `${dirPath}/fruit.txt`, (err) => {
     if (!err) {
-        console.log("File is Updated");
+        console.log("File is Renamed..");
     }
 })
-
 
 
 
