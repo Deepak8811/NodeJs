@@ -309,16 +309,61 @@ const express = require('express');
 const app = express();//Executable banane ke liye kiya gaya hai ....
 //Home page
 app.get("", (req, resp) => {
-    console.log("Data send by the browser is=>", req.query.name)
+    // console.log("Data send by the browser is=>", req.query.name)
 
-    resp.send("<h1>Hello!</h1>"+req.query.name);
+    // resp.send("<h1>Hello!</h1>"+req.query.name);
+    resp.send(`
+    <h1>Hello! This is home page</h1>
+    <a href="/about">Go to about page</a>
+    `)
 });
 //pages
 app.get('/about', (req, resp) => {
-    resp.send("Hello! This is Deepak chaurasiya and i am a full stack developer.")
+    resp.send(`
+    <input type="text" placeholder="User Name" value="${req.query.name}"/>
+    <button>Click Me</button>
+    <a href="/">Go to Home page</a>
+    `)
 });
 app.get('/help', (req, resp) => {
-    resp.send("Hello! This is Help page.")
+    resp.send([
+        {
+            name: 'Deepak chaurasiya',
+            email: 'deepak@test.com',
+            contact: '6378295721',
+            address: 'New Delhi',
+            course: 'B-tech',
+            Profession: 'Full stack developer'
+
+        },
+        {
+            name: 'Deepak chaurasiya',
+            email: 'deepak@test.com',
+            contact: '6378295721',
+            address: 'New Delhi',
+            course: 'B-tech',
+            Profession: 'Full stack developer'
+
+        },
+        {
+            name: 'Deepak chaurasiya',
+            email: 'deepak@test.com',
+            contact: '6378295721',
+            address: 'New Delhi',
+            course: 'B-tech',
+            Profession: 'Full stack developer'
+
+        },
+        {
+            name: 'Deepak chaurasiya',
+            email: 'deepak@test.com',
+            contact: '6378295721',
+            address: 'New Delhi',
+            course: 'B-tech',
+            Profession: 'Full stack developer'
+
+        }
+    ])
 });
 
 //Now create a server poart.
