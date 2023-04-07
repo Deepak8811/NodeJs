@@ -394,11 +394,15 @@ app.get('/profile', (req, resp) => {
         contact: "6378295721",
         profession: "Full stack Developer",
         Cities: "Haridwar,Delhi,Prayagraj",
-
+        skills: ['c', 'c++', 'JavaScript', 'ReactJs', 'NodeJs', 'ExpressJs', 'MongoDB', 'Mongoes'],
 
     };
     resp.render('profile', { user });
 });
+//Login Page
+app.get('/login', (req, resp) => {
+    resp.render('login')
+})
 // app.get('/about', (req, resp) => {
 //     resp.sendFile(`${publicPath}/about.html`);
 // });
