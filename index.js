@@ -372,53 +372,97 @@
 
 //Html pages 
 
-const express = require('express');
-const path = require('path');
+// const express = require('express');
+// const path = require('path');
 
-const app = express();
-const publicPath = path.join(__dirname, 'public');
+// const app = express();
+// const publicPath = path.join(__dirname, 'public');
 
-app.set('view engine', 'ejs');
-// console.log(publicPath);
+// app.set('view engine', 'ejs');
+// // console.log(publicPath);
 
-// app.use(express.static(publicPath));
-// for removing extension use app.get() method and inside the get method ude resp.sendFile(`${pathOtTheFolder}/fileName`)
-app.get('', (req, resp) => {
-    resp.sendFile(`${publicPath}/index.html`);
-});
-//Using ejs template
-app.get('/profile', (req, resp) => {
-    const user = {
-        name: "Deepak chaurasiya",
-        email: "deepak@test.com",
-        contact: "6378295721",
-        profession: "Full stack Developer",
-        Cities: "Haridwar,Delhi,Prayagraj",
-        skills: ['c', 'c++', 'JavaScript', 'ReactJs', 'NodeJs', 'ExpressJs', 'MongoDB', 'Mongoes'],
+// // app.use(express.static(publicPath));
+// // for removing extension use app.get() method and inside the get method ude resp.sendFile(`${pathOtTheFolder}/fileName`)
+// app.get('', (req, resp) => {
+//     resp.sendFile(`${publicPath}/index.html`);
+// });
+// //Using ejs template
+// app.get('/profile', (req, resp) => {
+//     const user = {
+//         name: "Deepak chaurasiya",
+//         email: "deepak@test.com",
+//         contact: "6378295721",
+//         profession: "Full stack Developer",
+//         Cities: "Haridwar,Delhi,Prayagraj",
+//         skills: ['c', 'c++', 'JavaScript', 'ReactJs', 'NodeJs', 'ExpressJs', 'MongoDB', 'Mongoes'],
 
-    };
-    resp.render('profile', { user });
-});
-//Login Page
-app.get('/login', (req, resp) => {
-    resp.render('login')
-})
+//     };
+//     resp.render('profile', { user });
+// });
+// //Login Page
+// app.get('/login', (req, resp) => {
+//     resp.render('login')
+// })
+// // app.get('/about', (req, resp) => {
+// //     resp.sendFile(`${publicPath}/about.html`);
+// // });
+// // Page ka name hum kuch bhi rakh sakte hain
 // app.get('/about', (req, resp) => {
 //     resp.sendFile(`${publicPath}/about.html`);
 // });
-// Page ka name hum kuch bhi rakh sakte hain
-app.get('/about', (req, resp) => {
-    resp.sendFile(`${publicPath}/about.html`);
-});
-app.get('/home', (req, resp) => {
-    resp.sendFile(`${publicPath}/home.html`);
-});
-// Agar user galat page add kare to usko koi bhi page dikhana ho to File name ki jagah hum '*' use karenge. example-
-app.get('*', (req, resp) => {
-    resp.sendFile(`${publicPath}/404.html`);
-});
-//Server Poart
-app.listen(5000);
+// app.get('/home', (req, resp) => {
+//     resp.sendFile(`${publicPath}/home.html`);
+// });
+// // Agar user galat page add kare to usko koi bhi page dikhana ho to File name ki jagah hum '*' use karenge. example-
+// app.get('*', (req, resp) => {
+//     resp.sendFile(`${publicPath}/404.html`);
+// });
+// //Server Poart
+// app.listen(5000);
+
+// MiddleWare if a common function which is ued with route and with the help of middleware we access request and response and modify the result
+
+const express = require('express');
+const reqFilter = require('./middleware')
+const app = express();
+const route = express.Router();
+route.use(reqFilter);
+
+//  Creating middleware 
+// const reqFilter = (req, resp, next) => {
+//     // console.log('reqFilter');
+//     if (!req.query.age) {
+//         resp.send("Please provide age");
+//     }
+//     else if (req.query.age < 18) {
+//         resp.send("You can not access this page");
+//     }
+//     else {
+//         next();
+//     }
+
+// }
+// Apply middleware on all route...
+// app.use(reqFilter);
+// Route
+app.get('/', (request, response) => {
+    response.send('Welcome! To Home Page');
+})
+//Middleware on a single  or more route
+app.get('/user', (request, response) => {
+    response.send('Welcome! To user page');
+})
+
+route.get('/about', reqFilter, (request, response) => {
+    response.send('Welcome! To about page');
+})
+route.get('/contact', (request, response) => {
+    response.send('Welcome! To contact page');
+})
+
+app.use('/', route)
+
+app.listen(7000);
 
 
 
