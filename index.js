@@ -376,14 +376,28 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-app.set('view engine','ejs');
 const publicPath = path.join(__dirname, 'public');
+
+app.set('view engine', 'ejs');
 // console.log(publicPath);
 
 // app.use(express.static(publicPath));
 // for removing extension use app.get() method and inside the get method ude resp.sendFile(`${pathOtTheFolder}/fileName`)
 app.get('', (req, resp) => {
     resp.sendFile(`${publicPath}/index.html`);
+});
+//Using ejs template
+app.get('/profile', (req, resp) => {
+    const user = {
+        name: "Deepak chaurasiya",
+        email: "deepak@test.com",
+        contact: "6378295721",
+        profession: "Full stack Developer",
+        Cities: "Haridwar,Delhi,Prayagraj",
+
+
+    };
+    resp.render('profile', { user });
 });
 // app.get('/about', (req, resp) => {
 //     resp.sendFile(`${publicPath}/about.html`);
