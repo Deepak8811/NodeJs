@@ -304,70 +304,104 @@
 
 // Express Js
 
-const express = require('express');
+// const express = require('express');
 
-const app = express();//Executable banane ke liye kiya gaya hai ....
-//Home page
-app.get("", (req, resp) => {
-    // console.log("Data send by the browser is=>", req.query.name)
+// const app = express();//Executable banane ke liye kiya gaya hai ....
+// //Home page
+// app.get("", (req, resp) => {
+//     // console.log("Data send by the browser is=>", req.query.name)
 
-    // resp.send("<h1>Hello!</h1>"+req.query.name);
-    resp.send(`
-    <h1>Hello! This is home page</h1>
-    <a href="/about">Go to about page</a>
-    `)
-});
-//pages
-app.get('/about', (req, resp) => {
-    resp.send(`
-    <input type="text" placeholder="User Name" value="${req.query.name}"/>
-    <button>Click Me</button>
-    <a href="/">Go to Home page</a>
-    `)
-});
-app.get('/help', (req, resp) => {
-    resp.send([
-        {
-            name: 'Deepak chaurasiya',
-            email: 'deepak@test.com',
-            contact: '6378295721',
-            address: 'New Delhi',
-            course: 'B-tech',
-            Profession: 'Full stack developer'
+//     // resp.send("<h1>Hello!</h1>"+req.query.name);
+//     resp.send(`
+//     <h1>Hello! This is home page</h1>
+//     <a href="/about">Go to about page</a>
+//     `)
+// });
+// //pages
+// app.get('/about', (req, resp) => {
+//     resp.send(`
+//     <input type="text" placeholder="User Name" value="${req.query.name}"/>
+//     <button>Click Me</button>
+//     <a href="/">Go to Home page</a>
+//     `)
+// });
+// app.get('/help', (req, resp) => {
+//     resp.send([
+//         {
+//             name: 'Deepak chaurasiya',
+//             email: 'deepak@test.com',
+//             contact: '6378295721',
+//             address: 'New Delhi',
+//             course: 'B-tech',
+//             Profession: 'Full stack developer'
 
-        },
-        {
-            name: 'Deepak chaurasiya',
-            email: 'deepak@test.com',
-            contact: '6378295721',
-            address: 'New Delhi',
-            course: 'B-tech',
-            Profession: 'Full stack developer'
+//         },
+//         {
+//             name: 'Deepak chaurasiya',
+//             email: 'deepak@test.com',
+//             contact: '6378295721',
+//             address: 'New Delhi',
+//             course: 'B-tech',
+//             Profession: 'Full stack developer'
 
-        },
-        {
-            name: 'Deepak chaurasiya',
-            email: 'deepak@test.com',
-            contact: '6378295721',
-            address: 'New Delhi',
-            course: 'B-tech',
-            Profession: 'Full stack developer'
+//         },
+//         {
+//             name: 'Deepak chaurasiya',
+//             email: 'deepak@test.com',
+//             contact: '6378295721',
+//             address: 'New Delhi',
+//             course: 'B-tech',
+//             Profession: 'Full stack developer'
 
-        },
-        {
-            name: 'Deepak chaurasiya',
-            email: 'deepak@test.com',
-            contact: '6378295721',
-            address: 'New Delhi',
-            course: 'B-tech',
-            Profession: 'Full stack developer'
+//         },
+//         {
+//             name: 'Deepak chaurasiya',
+//             email: 'deepak@test.com',
+//             contact: '6378295721',
+//             address: 'New Delhi',
+//             course: 'B-tech',
+//             Profession: 'Full stack developer'
 
-        }
-    ])
-});
+//         }
+//     ])
+// });
 
 //Now create a server poart.
+// app.listen(5000);
+
+
+//Html pages 
+
+const express = require('express');
+const path = require('path');
+
+const app = express();
+app.set('view engine','ejs');
+const publicPath = path.join(__dirname, 'public');
+// console.log(publicPath);
+
+// app.use(express.static(publicPath));
+// for removing extension use app.get() method and inside the get method ude resp.sendFile(`${pathOtTheFolder}/fileName`)
+app.get('', (req, resp) => {
+    resp.sendFile(`${publicPath}/index.html`);
+});
+// app.get('/about', (req, resp) => {
+//     resp.sendFile(`${publicPath}/about.html`);
+// });
+// Page ka name hum kuch bhi rakh sakte hain
+app.get('/about', (req, resp) => {
+    resp.sendFile(`${publicPath}/about.html`);
+});
+app.get('/home', (req, resp) => {
+    resp.sendFile(`${publicPath}/home.html`);
+});
+// Agar user galat page add kare to usko koi bhi page dikhana ho to File name ki jagah hum '*' use karenge. example-
+app.get('*', (req, resp) => {
+    resp.sendFile(`${publicPath}/404.html`);
+});
+//Server Poart
 app.listen(5000);
+
 
 
 
