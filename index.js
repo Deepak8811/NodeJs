@@ -422,11 +422,11 @@
 
 // MiddleWare if a common function which is ued with route and with the help of middleware we access request and response and modify the result
 
-const express = require('express');
-const reqFilter = require('./middleware')
-const app = express();
-const route = express.Router();
-route.use(reqFilter);
+// const express = require('express');
+// const reqFilter = require('./middleware')
+// const app = express();
+// const route = express.Router();
+// route.use(reqFilter);
 
 //  Creating middleware 
 // const reqFilter = (req, resp, next) => {
@@ -445,24 +445,88 @@ route.use(reqFilter);
 // Apply middleware on all route...
 // app.use(reqFilter);
 // Route
-app.get('/', (request, response) => {
-    response.send('Welcome! To Home Page');
-})
-//Middleware on a single  or more route
-app.get('/user', (request, response) => {
-    response.send('Welcome! To user page');
-})
+// app.get('/', (request, response) => {
+//     response.send('Welcome! To Home Page');
+// })
+// //Middleware on a single  or more route
+// app.get('/user', (request, response) => {
+//     response.send('Welcome! To user page');
+// })
 
-route.get('/about', reqFilter, (request, response) => {
-    response.send('Welcome! To about page');
-})
-route.get('/contact', (request, response) => {
-    response.send('Welcome! To contact page');
-})
+// route.get('/about', reqFilter, (request, response) => {
+//     response.send('Welcome! To about page');
+// })
+// route.get('/contact', (request, response) => {
+//     response.send('Welcome! To contact page');
+// })
 
-app.use('/', route)
+// app.use('/', route)
 
-app.listen(7000);
+// app.listen(7000);
+
+
+
+// connect mongodb with nodejs.....
+
+//  These code transfer in  saprate file....."mongodb.js"
+
+//import mongodb file here
+
+const dbConnect = require('./mongodb');
+
+
+// const { MongoClient } = require('mongodb');
+// // or
+// // const MongoClient = require('mongodb').MongoClient
+
+// const url = 'mongodb+srv://root:root@cluster0.3yxyoso.mongodb.net/test'
+
+// const Client = new MongoClient(url);
+// const database = 'e-comm';
+
+// async function getData() {
+//     let result = await Client.connect();
+
+//     let db = result.db(database);
+//     let collection = db.collection('products');
+
+//     // return Promises
+//     // console.log(collection.find({}).toArray());
+
+//     // Avoid Promises use "await"
+//     let response = await collection.find({ name: 'm 50' }).toArray();   //collection ko find kar sakte hain pass kar ke find function me
+//     console.log(response);
+// }
+
+
+
+//Common function for connecting database for all type of database
+
+// async function dbConnect() {
+//     let result = await Client.connect();
+
+//     let db = result.db(database);
+//     return db.collection('products');
+// }
+
+// dbConnect();
+// console.log(dbConnect());
+
+
+// dbConnect().then((response) => {
+//     // console.log(response.find({}).toArray());   //return promise so that handle promise 
+//     response.find({ name: 'Nokia 1100' }).toArray().then((data) => {
+//         console.log(data);
+//     })
+// })
+
+const main = async () => {
+    let data = await dbConnect();
+    data = await data.find().toArray();
+    console.log(data);
+}
+//Function invocation......
+main();
 
 
 
