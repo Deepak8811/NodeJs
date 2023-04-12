@@ -472,7 +472,7 @@
 
 //import mongodb file here
 
-const dbConnect = require('./mongodb');
+// const dbConnect = require('./mongodb');
 
 
 // const { MongoClient } = require('mongodb');
@@ -520,12 +520,42 @@ const dbConnect = require('./mongodb');
 //     })
 // })
 
+// const main = async () => {
+//     let data = await dbConnect();
+//     data = await data.find().toArray();
+//     console.log(data);
+// }
+// //Function invocation......
+// main();
+
+
+
+
+
+
+
+// "Mongoose" from scrach.......
+
+const mongoose = require('mongoose');
 const main = async () => {
-    let data = await dbConnect();
-    data = await data.find().toArray();
-    console.log(data);
+    // await mongoose.connect("mongodb://mongodb+srv://root:root@cluster0.3yxyoso.mongodb.net/test");//URL is not correct
+    await mongoose.connect("mongodb+srv://root:root@cluster0.3yxyoso.mongodb.net/e-comm ");//Correct URL 
+    const productSchema = new mongoose.Schema({
+        name: String,
+        price: Number,
+        brand: String,
+        category: String
+    });
+    const productModel = mongoose.model('products', productSchema);
+    let data = new productModel({
+        name: "m-8",
+        price: 1000,
+        brand: "Motorola",
+        category: "mobile"
+    })
+    let result = await data.save();
+    console.log(result);
 }
-//Function invocation......
 main();
 
 
