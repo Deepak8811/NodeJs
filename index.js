@@ -537,15 +537,19 @@
 // "Mongoose" from scrach.......
 
 const mongoose = require('mongoose');
-const main = async () => {
-    // await mongoose.connect("mongodb://mongodb+srv://root:root@cluster0.3yxyoso.mongodb.net/test");//URL is not correct
-    await mongoose.connect("mongodb+srv://root:root@cluster0.3yxyoso.mongodb.net/e-comm ");//Correct URL 
-    const productSchema = new mongoose.Schema({
-        name: String,
-        price: Number,
-        brand: String,
-        category: String
-    });
+
+// await mongoose.connect("mongodb://mongodb+srv://root:root@cluster0.3yxyoso.mongodb.net/test");//URL is not correct
+mongoose.connect("mongodb+srv://root:root@cluster0.3yxyoso.mongodb.net/e-comm ");//Correct URL 
+
+
+const productSchema = new mongoose.Schema({
+    name: String,
+    price: Number,
+    brand: String,
+    category: String
+});
+
+const saveInDB = async () => {
     const productModel = mongoose.model('products', productSchema);
     let data = new productModel({
         name: "m-8",
@@ -556,7 +560,35 @@ const main = async () => {
     let result = await data.save();
     console.log(result);
 }
-main();
+// saveInDB()
+const updateInDB = async () => {
+    const Product = mongoose.model('products', productSchema);
+    let data = await Product.updateOne(
+        { name: "nokia 1100" },
+        { $set: { price: 310000, name: "nokia 3310" } }
+    )
+    console.log(data);
+}
+// updateInDB();
+
+// For delete
+
+const deleteInDB = async () => {
+    const product = mongoose.model('products', productSchema);
+    let data = await product.deleteOne({ name: "nokia 1100" });
+    console.log(data);
+}
+// deleteInDB();
+
+// For find
+
+const findInDB = async () => {
+    const product = mongoose.model('products', productSchema);
+    let data = await product.find({name:"m"});
+    console.log(data);
+}
+
+// findInDB();
 
 
 
