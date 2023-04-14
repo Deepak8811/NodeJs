@@ -594,13 +594,13 @@
 // Post API with mongoose
 
 
-const express = require('express');
-require('./config');
-const Product = require('./product');
-const app = express();
+// const express = require('express');
+// require('./config');
+// const Product = require('./product');
+// const app = express();
 
 
-app.use(express.json())//request ke data ko json me convert karta hai....tabhi hum data ko read kar pate hain .....iska use jaruri hota hai ...warna read hi nhi kar payenge
+// app.use(express.json())//request ke data ko json me convert karta hai....tabhi hum data ko read kar pate hain .....iska use jaruri hota hai ...warna read hi nhi kar payenge
 
 
 
@@ -641,26 +641,49 @@ app.use(express.json())//request ke data ko json me convert karta hai....tabhi h
 
 //Search API....
 
-app.get("/search/:key", async (req, resp) => {
-    console.log(req.params.key)
-    let data = await Product.find(
-        {
-            "$or": [
-                { "name": { $regex: req.params.key } },
+// app.get("/search/:key", async (req, resp) => {
+//     console.log(req.params.key)
+//     let data = await Product.find(
+//         {
+//             "$or": [
+//                 { "name": { $regex: req.params.key } },
 
-                { "brand": { $regex: req.params.key } },
-                { "category": { $regex: req.params.key } }
-            ]
+//                 { "brand": { $regex: req.params.key } },
+//                 { "category": { $regex: req.params.key } }
+//             ]
+//         }
+//     );
+
+
+//     resp.send(data);
+// })
+
+
+
+// app.listen(7000);
+
+
+
+
+// Uplode file in Nodejs.......
+
+const express = require('express');
+const multer = require('multer');
+const app = express();
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, "uploads")
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.fieldname + "-" + Date.now() + ".pdf" + ".pdf")
         }
-    );
-
-
-    resp.send(data);
-})
-
- 
-
-app.listen(7000);
+    })
+}).single("user_files");
+app.post("/uplode", upload, (request, response) => {
+    response.send("File uploaded");
+});
+app.listen(6000);
 
 
 
