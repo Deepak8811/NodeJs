@@ -667,24 +667,94 @@
 
 // Uplode file in Nodejs.......
 
-const express = require('express');
-const multer = require('multer');
-const app = express();
-const upload = multer({
-    storage: multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, "uploads")
-        },
-        filename: function (req, file, cb) {
-            cb(null, file.fieldname + "-" + Date.now() + ".pdf" + ".pdf")
-        }
-    })
-}).single("user_files");
-app.post("/uplode", upload, (request, response) => {
-    response.send("File uploaded");
-});
-app.listen(6000);
+// const express = require('express');
+// const multer = require('multer');
+// const app = express();
+// const upload = multer({
+//     storage: multer.diskStorage({
+//         destination: function (req, file, cb) {
+//             cb(null, "uploads")
+//         },
+//         filename: function (req, file, cb) {
+//             cb(null, file.fieldname + "-" + Date.now() + ".pdf" + ".pdf")
+//         }
+//     })
+// }).single("user_files");
+// app.post("/uplode", upload, (request, response) => {
+//     response.send("File uploaded");
+// });
+// app.listen(6000);
 
+
+
+
+//OS Module(operating system Module)....use for about the information of operating system.....
+
+// const os = require('os');
+
+
+//All information
+// console.log(os);
+//For architecture of uor system
+// console.log(os.arch());
+
+
+//for knowing how many RAM free in our system(use freememory());
+
+
+// console.log(os.freemem());//give in bytes so convert in GB
+
+// console.log(os.freemem() / (1024 * 1024 * 1024));
+
+
+//For total memory
+// console.log(os.totalmem() / (1024 * 1024 * 1024));
+
+//For hostName.....
+
+// console.log(os.hostname());
+
+
+
+//For platform
+
+// console.log(os.platform());
+
+
+// For user information .....
+
+// console.log(os.userInfo());
+
+
+
+// Event and Event Emitter....
+
+const express = require('express');
+const EventEmitter = require('events');
+const app = express();
+
+const event = new EventEmitter();
+let count = 0;
+
+event.on("countAPI", () => {
+    count++;
+    console.log("Event Called", count);
+})
+
+app.get("/", (req, resp) => {
+    resp.send("API Called");
+    event.emit("countAPI");
+});
+app.get("/search", (req, resp) => {
+    resp.send("Search API Called");
+    event.emit("countAPI");
+});
+app.get("/update", (req, resp) => {
+    resp.send("Update API Called");
+    event.emit("countAPI");
+});
+
+app.listen(7000);
 
 
 
