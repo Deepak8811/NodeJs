@@ -729,35 +729,39 @@
 
 // Event and Event Emitter....
 
-const express = require('express');
-const EventEmitter = require('events');
-const app = express();
+// const express = require('express');
+// const EventEmitter = require('events');
+// const app = express();
 
-const event = new EventEmitter();
-let count = 0;
+// const event = new EventEmitter();
+// let count = 0;
 
-event.on("countAPI", () => {
-    count++;
-    console.log("Event Called", count);
-})
+// event.on("countAPI", () => {
+//     count++;
+//     console.log("Event Called", count);
+// })
 
-app.get("/", (req, resp) => {
-    resp.send("API Called");
-    event.emit("countAPI");
-});
-app.get("/search", (req, resp) => {
-    resp.send("Search API Called");
-    event.emit("countAPI");
-});
-app.get("/update", (req, resp) => {
-    resp.send("Update API Called");
-    event.emit("countAPI");
-});
+// app.get("/", (req, resp) => {
+//     resp.send("API Called");
+//     event.emit("countAPI");
+// });
+// app.get("/search", (req, resp) => {
+//     resp.send("Search API Called");
+//     event.emit("countAPI");
+// });
+// app.get("/update", (req, resp) => {
+//     resp.send("Update API Called");
+//     event.emit("countAPI");
+// });
 
-app.listen(7000);
-
-
+// app.listen(7000);
 
 
+let x = 10;
+console.log(x++);
+console.log(x);
 
-
+const y = 19;
+// console.log(y++);
+// console.log(++y);
+//It give TypeError becouse of variable is const type means constant means no any value is assign in const type of  variable.
